@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>DreamSpaces - Home</title>
+
+   <!-- font awesome cdn link  -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+
+   <!-- custom css file link  -->
+   <link rel="stylesheet" href="/public/css/homepage.css">
+</head>
+
+<body>
+	<!-- header start -->
+	<header class="header">
+		<nav class="navbar nav">
+		  <section class="flex">
+			<a href="/index" class="logo"><i class="fas fa-house"></i>DreamSpaces</a>
+			<i class="mobile-view fa-solid fa-bars"></i>
+			<ul id="top-menu">
+			  <li>
+				<a href="/post_your_property"
+				  >Post Property<i class="fas fa-paper-plane"></i
+				></a>
+			  </li>
+			  <li>
+				<a href="/user_details?tab=saved_properties&tabId=saved_props"
+				  ><span class="menu-mobile-view">Saved</span
+				  ><i class="far fa-heart"></i
+				></a>
+			  </li>
+			  <li>
+				<a href="/notification" class="notifications">
+				  <span class="menu-mobile-view">Notifications</span>
+				  <i class="far fa-bell"></i>
+				</a>
+			  </li>
+			  <li class="user-profile">
+				<a href="#" class="profile-icon"
+				  ><span class="menu-mobile-view">User</span
+				  ><i class="fas fa-user"></i
+				></a>
+				<ul>
+				  <li>
+					<a href="./user_details?tab=account&tabId=acc">Profile</a>
+				  </li>
+				  <li><a href="/login">Sign Up</a></li>
+          <li><a href="/admin_login?modal=adminLoginModal">Admin</a></li>
+				</ul>
+			  </li>
+			</ul>
+		  </section>
+		</nav>
+	  </header>
+	  <!-- header ends -->
+
+<!-- home section starts  -->
+
+<div class="home">
+  <!-- index.ejs -->
+
+<div class="home">
+  <video autoplay muted loop id="bg-video">
+      <source src="public/images/home_bg1.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+  </video>
+
+
+</div>
+
+  <form action="/home_search" method="post">
+	<section class="center">
+    <div class="welcome-hero-form">
+        <div class="hero-form">
+            <!-- <h3>What?</h3>
+            <form>
+                <input type="text" placeholder="Ex:2Bhk&3Bhk" />
+                <a href="#"><i class="fas fa-bars"></i></a>
+            </form> -->
+            <select id="property_type" name="property_type" required>
+              <option value="">Property Type</option>
+              <option value="residential">Residential</option>
+              <option value="commercial">Commercial</option>
+              <option value="land">Land/Plot</option>
+            </select>
+        </div>
+        <div class="hero-form">
+            <!-- <h3>Location?</h3>
+            <form>
+                <input type="text" placeholder="Ex: Hyderabad,Mumbai" />
+                <a href="#"><ion-icon name="location-outline"></ion-icon>
+                </a>
+            </form> -->
+          <select id="ad_type" name="ad_type" required>
+            <option value="">Select Property Ad Type</option>
+          </select>
+        </div>
+        <div class="hero-form">
+          <select id="city" name="city" style="height: 35px; margin-right: 55px; width: 120px" required>
+              <option value="">City</option>  
+              <option value="Chennai">Chennai</option>
+              <option value="Mumbai">Mumbai</option>
+              <option value="Banglore">Banglore</option>
+              <option value="Hyderabad">Hyderabad</option>
+              <option value="Kolkata">Kolkata</option>
+          </select>
+        </div>
+    </div>
+    <div class="hero-search">
+        <button class="hero-btn" type="submit">
+            <i data-feather="search"></i> Search
+        </button>
+    </div>
+  </section>
+  </form>
+</div>
+
+<script>
+  const propertyTypeSelect = document.getElementById("property_type");
+  const adTypeSelect = document.getElementById("ad_type");
+
+  const urlParams = new URLSearchParams(window.location.search);
+  const message = urlParams.get('message');
+
+  if(message)
+  {
+    setTimeout(function m(){alert(message);}, 200);
+  }
+
+  propertyTypeSelect.addEventListener("change", function () {
+    adTypeSelect.innerHTML = ""; // Clear previous options
+
+    switch (propertyTypeSelect.value) {
+      case "residential":
+        addOption(adTypeSelect, "Rent", "rent");
+        addOption(adTypeSelect, "Buy", "buy");
+        addOption(adTypeSelect, "Flatmates", "flatmates");
+        break;
+      case "commercial":
+        addOption(adTypeSelect, "Rent", "rent");
+        addOption(adTypeSelect, "Buy", "buy");
+        break;
+      case "land":
+        addOption(adTypeSelect, "Buy", "buy");
+        addOption(adTypeSelect, "Development", "development");
+        break;
+      default:
+        addOption(adTypeSelect, "Select Property Ad Type", "");
+        break;
+    }
+  });
+  function addOption(selectElement, text, value) {
+        const option = document.createElement("option");
+        option.textContent = text;
+        option.value = value;
+        selectElement.appendChild(option);
+  }
+
+</script>
+<!-- home section ends -->
+
+<!-- services section starts  -->
+
+<section class="services">
+
+   <h1 class="heading">our services</h1>
+
+   <div class="box-container">
+
+      <div class="box">
+         <img src="images/icon-1.png" alt="">
+         <h3>buy house</h3>
+         <p>Unlock your dream home ownership with this captivating property,Celebrate the journey of finding your home with us.</p>
+      </div>
+
+      <div class="box">
+         <img src="images/icon-2.png" alt="">
+         <h3>rent house</h3>
+         <p>Discover your ideal home for rent, offering comfort, convenience, and modern living at its finest.</p>
+      </div>
+
+      <div class="box">
+         <img src="images/icon-3.png" alt="">
+         <h3>sell house</h3>
+         <p>Experience the perfect blend of comfort and luxury in this stunning home, now available for sale.</p>
+      </div>
+	  <div class="box">
+		<img src="images/icon-3.png" alt="">
+		<h3>sell plot</h3>
+		<p>Embrace the opportunity to build your vision on this prime plot of land, available for sale now.</p>
+	 </div>
+	 <div class="box">
+		<img src="images/icon-1.png" alt="">
+		<h3>buy plot</h3>
+		<p>Seize the chance to invest in your future with this exceptional plot of land, waiting for you to make it yours.</p>
+	 </div>
+	 <div class="box">
+		<img src="images/icon-2.png" alt="">
+		<h3>develop land</h3>
+		<p>Unlock the potential of this prime land for development, offering limitless possibilities for your next project.</p>
+	 </div>
+   </div>
+
+</section>
+
+<!-- services section ends -->
+
+    <!-- review section starts  -->
+
+    <section class="reviews">
+      <h1 class="heading">Our Customers' Reviews</h1>
+
+      <div class="box-container">
+        <div class="box">
+          <div class="user">
+            <img src="/public/images/client_1.png" alt="" />
+            <div>
+              <h3>Hemanth</h3>
+              <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+              </div>
+            </div>
+          </div>
+          <p>
+            "This website is a lifesaver for finding rental homes. The interface is intuitive, listings are detailed with high-quality images, and filters make search easy. Responsive customer support seals the deal!"
+          </p>
+        </div>
+
+        <div class="box">
+          <div class="user">
+            <img src="/public/images/client_2.png" alt="" />
+            <div>
+              <h3>Ananya</h3>
+              <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+              </div>
+            </div>
+          </div>
+          <p>
+            "Finding my dream home was a joy on this website. Extensive property selection, detailed descriptions, and personalized recommendations made the process smooth. Seamless communication with sellers was a bonus!"
+            
+          </p>
+        </div>
+
+        <div class="box">
+          <div class="user">
+            <img src="/public/images/client_3.png" alt="" />
+            <div>
+              <h3>Praneeth</h3>
+              <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+              </div>
+            </div>
+          </div>
+          <p>
+            "Listing my property was a breeze on this website. The extensive reach attracted numerous buyers, and customizable options showcased my property effectively. Kudos for a hassle-free selling experience!"
+          </p>
+        </div>  
+    </section>
+
+    <!-- review section ends -->
+<!-- listings section starts  -->
+
+<section class="listings">
+
+  <h1 class="heading">latest listings</h1>
+
+  <div class="box-container">
+    
+    <% if(property && len && owner) { %>
+      <% for(var i=0; i<len; i++)  { %>
+      <div class="box">
+        <div class="admin">
+          <h3><%= owner[i].name.charAt(0) %></h3>
+          <div>
+            <p><%= owner[i].name %></p>
+            <span><%= property.available_from %></span>
+          </div>
+        </div>
+        <div class="thumb">
+          <p class="total-images">
+            <i class="far fa-image"></i><span><%= property[i].image.length %></span>
+          </p>
+          <p class="type"><span>flat</span><span>sale</span></p>
+          <form class="save">
+            <button type="submit" name="save" class="far fa-heart"></button>
+          </form>
+          <img src="/<%= property[i].image[0] %>" alt="<%= property[i].image[0] %>" />
+        </div>
+        <h3 class="name">Modern Flats and Apartments</h3>
+        <p class="location">
+          <i class="fas fa-map-marker-alt"></i
+          ><span><%= property[i].landmark_street %>, <%= property[i].locality %>, <%= property[i].city %></span>
+        </p>
+        <div class="flex">
+          <p><i class="fas fa-bed"></i><span><%= property[i].bhk_type %></span></p>
+          <p><i class="fas fa-bath"></i><span><%= property[i].bathrooms %></span></p>
+          <p><i class="fas fa-maximize"></i><span><%= property[i].built_up_area %>sqft</span></p>
+        </div>
+        <form action="/property_details" method="post">
+          <!-- <p id="object_id" name="object_id" style="display: none;" ><%= property._id %></p> -->
+          <textarea id="object-id" name="object_id" style="display: none;"><%= property[i]._id %></textarea>
+          <!-- <a href="property_details" class="btn">view property</a> -->
+          <button class="btn" id="view_property" type="submit">View Property</button>
+        </form>
+      </div>
+    <% } %>
+    <%} else {%>
+      <p>Sorry, we don't have any properies with your specifications.</p>
+    <% } %>
+ </div>	
+</section>
+<!-- listings section ends -->
+
+<!-- Footer starts -->
+<footer class="footer">
+	<div class="container_footer">
+	  <div class="row_footer">
+		<div class="footer-col">
+		  <h4>Company</h4>
+		  <ul>
+			<li><a href="#">About us</a></li>
+			<li><a href="#">Reviews</a></li>
+			<li><a href="#">Our Services</a></li>
+			<li><a href="#">Terms and Conditions</a></li>
+		  </ul>
+		</div>
+		<div class="footer-col">
+		  <h4>Help</h4>
+		  <ul>
+			<li><a href="#">FAQ</a></li>
+			<li><a href="#">Report</a></li>
+			<li><a href="#">Contact Us</a></li>
+			<li><a href="#">Privacy Policy</a></li>
+			<li><a href="#">Customer Service</a></li>
+		  </ul>
+		</div>
+		<div class="footer-col">
+		  <h4>Property</h4>
+		  <ul>
+			<li><a href="#">Rent</a></li>
+			<li><a href="#">Sell</a></li>
+			<li><a href="#">Buy</a></li>
+			
+		  </ul>
+		</div>
+		<div class="footer-col">
+		  <h4>Follow us</h4>
+		  <div class="social-links">
+			<a href="#"><i class="fab fa-facebook-f"></i></a>
+			<a href="#"><i class="fab fa-twitter"></i></a>
+			<a href="#"><i class="fab fa-instagram"></i></a>
+			<a href="#"><i class="fab fa-linkedin-in"></i></a>
+		  </div>
+		</div>
+	  </div>
+	</div>
+  </footer>
+<!-- footer ends -->
